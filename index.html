@@ -8,7 +8,7 @@
       position: relative;
       width: 400px;
       height: 400px;
-      margin: 50px auto;
+      margin: 50px auto;  
       font-size: 24px;
       border:solid
     }
@@ -76,9 +76,9 @@
     const secondAngle = seconds * 6;
 
     // Rotate the lines based on the calculated angles
-    $("#hourLine").css("transform",rotate(${hourAngle}deg)).children(".clock_number").html(hours).css("transform",rotate(${-hourAngle}deg))
-    $("#minuteLine").css("transform",rotate(${minuteAngle}deg)).children(".clock_number").html(minutes).css("transform",rotate(${-minuteAngle}deg))
-    $("#secondLine").css("transform",rotate(${secondAngle}deg)).children(".clock_number").html(seconds).css("transform",rotate(${-secondAngle}deg))
+    $("#hourLine").css("transform",`rotate(${hourAngle}deg)`).children(".clock_number").html(hours).css("transform",`rotate(${-hourAngle}deg)`)
+    $("#minuteLine").css("transform",`rotate(${minuteAngle}deg)`).children(".clock_number").html(minutes).css("transform",`rotate(${-minuteAngle}deg)`)
+    $("#secondLine").css("transform",`rotate(${secondAngle}deg)`).children(".clock_number").html(seconds).css("transform",`rotate(${-secondAngle}deg)`)
   }
 
   // Update the clock every second
