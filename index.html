@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Clock with Lines</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <style>
+    #clock {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      font-size: 24px;
+      border:solid
+    }
+    .hour-line, .minute-line, .second-line {
+      position: absolute;
+      transform-origin: 50% 100%;
+      padding-bottom:15%;
+      left:50%;
+    }
+    .hour-line {
+      width: 6px;
+      height: 60px;
+      top: 90px;
+    }
+    .minute-line {
+      width: 4px;
+      height: 80px;
+      top: 40px;
+    }
+    .second-line {
+      width: 2px;
+      height: 100px;
+      top: 25px;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div id="clock">
+  <div class="hour-line" id="hourLine">
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+  </div>
+  <div class="minute-line" id="minuteLine">
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+
+  </div>
+  <div class="second-line" id="secondLine">
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    <div class="clock_number">00</div>
+    
+  </div>
+</div>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours() || 12;
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    // Calculate angles for hour, minute, and second hands
+    const hourAngle = (hours % 12) * 30 + minutes * 0.5;
+    const minuteAngle = minutes * 6;
+    const secondAngle = seconds * 6;
+
+    // Rotate the lines based on the calculated angles
+    $("#hourLine").css("transform",rotate(${hourAngle}deg)).children(".clock_number").html(hours).css("transform",rotate(${-hourAngle}deg))
+    $("#minuteLine").css("transform",rotate(${minuteAngle}deg)).children(".clock_number").html(minutes).css("transform",rotate(${-minuteAngle}deg))
+    $("#secondLine").css("transform",rotate(${secondAngle}deg)).children(".clock_number").html(seconds).css("transform",rotate(${-secondAngle}deg))
+  }
+
+  // Update the clock every second
+  setInterval(updateClock, 1000);
+
+  // Initial call to display the clock immediately
+  updateClock();
+</script>
+
+</body>
+</html>
